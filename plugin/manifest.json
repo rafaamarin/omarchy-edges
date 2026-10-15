@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "omarchy-edges",
+  "name": "omarchy-edges",
+  "version": "1.0.0",
+  "author": "rafa",
+  "description": "Crop the desktop into the healthy region of a damaged panel",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "omarchy-edges",
+    "description": "Open the damaged-panel edge crop editor",
+    "category": "Display",
+    "allowMultiple": false
+  }
+}

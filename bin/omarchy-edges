@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Crop desktop content into the healthy region of a damaged panel.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+APP="${OMARCHY_EDGES_APP:-$ROOT/share/omarchy-edges/omarchy_edges.py}"
+# Prefer installed copy when present
+if [[ -f "$HOME/.local/share/omarchy-edges/omarchy_edges.py" ]]; then
+  APP="$HOME/.local/share/omarchy-edges/omarchy_edges.py"
+fi
+
+export GDK_BACKEND="${GDK_BACKEND:-wayland}"
+if [[ "${1:-}" == "mask" ]]; then
+  exec env LD_PRELOAD=/usr/lib/libgtk4-layer-shell.so python3 "$APP" "$@"
+fi
+exec python3 "$APP" "$@"
